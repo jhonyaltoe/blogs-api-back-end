@@ -1,9 +1,10 @@
 const express = require('express');
 const controllers = require('../controllers');
+const middlewares = require('../middlewares');
 
 const router = express.Router();
 
 router.route('/user')
-  .post(controllers.userCreate);
+  .post(middlewares.validateUserCreate, controllers.userCreate);
 
 module.exports = router;
