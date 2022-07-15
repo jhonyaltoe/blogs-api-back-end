@@ -8,10 +8,26 @@ router.route('/user/:id')
   .get(middlewares.validateToken, controllers.getUserById);
 
 router.route('/user')
-  .post(middlewares.validateUserCreate, controllers.userCreate)
-  .get(middlewares.validateToken, controllers.listUsers);
+  .post(
+    middlewares.validateUserCreate,
+    controllers.userCreate,
+  )
+  .get(
+    middlewares.validateToken,
+    controllers.listUsers,
+  );
 
 router.route('/login')
-  .post(middlewares.validateLogin, controllers.login);
+  .post(
+    middlewares.validateLogin,
+    controllers.login,
+  );
+
+router.route('/categories')
+  .post(
+    middlewares.validateToken,
+    middlewares.validateAddCategory,
+    controllers.addCategory,
+  );
 
 module.exports = router;
