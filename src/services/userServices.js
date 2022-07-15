@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const { User } = require('../database/models');
-const { auth, CustomError } = require('../helpers');
+const { jwt, CustomError } = require('../helpers');
 
 const login = async ({ email, password }) => {
   const userInfo = await User.findOne({
@@ -13,7 +13,7 @@ const login = async ({ email, password }) => {
 
   if (!errorPass) throw new CustomError('Invalid fields', 400);
 
-  const token = auth.generateToken(email);
+  const token = jwt.generateToken(email);
   return token;
 };
 
@@ -29,7 +29,7 @@ const userCreate = async (body) => {
   
   if (!created) throw new CustomError('User already registered', 409);
   const { password, ...rest } = user;
-  const token = auth.generateToken(rest);
+  const token = jwt.generateToken(rest);
   return token;
 };
 
