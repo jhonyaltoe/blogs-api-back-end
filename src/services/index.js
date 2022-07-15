@@ -1,4 +1,4 @@
-const { userCreate, login, listUsers } = require('./userServices');
+const { userCreate, login, listUsers, getUserById } = require('./userServices');
 const { tokenAuthentication } = require('./authServices');
 
 module.exports = {
@@ -6,4 +6,5 @@ module.exports = {
   login,
   tokenAuthentication,
   listUsers,
+  getUserById,
 };
