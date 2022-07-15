@@ -1,8 +1,6 @@
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 const { User } = require('../database/models');
-const { CustomError } = require('../helpers');
-require('dotenv').config();
+const { auth, CustomError } = require('../helpers');
 
 const login = async ({ email, password }) => {
   const userInfo = await User.findOne({
@@ -15,7 +13,7 @@ const login = async ({ email, password }) => {
 
   if (!errorPass) throw new CustomError('Invalid fields', 400);
 
-  const token = jwt.sign(email, process.env.JWT_SECRET);
+  const token = auth.generateToken(email);
   return token;
 };
 
@@ -30,9 +28,8 @@ const userCreate = async (body) => {
   });
   
   if (!created) throw new CustomError('User already registered', 409);
-
   const { password, ...rest } = user;
-  const token = jwt.sign(rest, process.env.JWT_SECRET);
+  const token = auth.generateToken(rest);
   return token;
 };
 
