@@ -5,7 +5,8 @@ const middlewares = require('../middlewares');
 const router = express.Router();
 
 router.route('/user')
-  .post(middlewares.validateUserCreate, controllers.userCreate);
+  .post(middlewares.validateUserCreate, controllers.userCreate)
+  .get(middlewares.validateToken, controllers.listUsers);
 
 router.route('/login')
   .post(middlewares.validateLogin, controllers.login);

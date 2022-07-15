@@ -11,7 +11,16 @@ const userCreate = controllerWrapper(async (req, res) => {
   return res.status(201).json({ token });
 });
 
+const listUsers = controllerWrapper(async (req, res) => {
+  await services.tokenAuthentication(req.headers.authorization);
+
+  const users = await services.listUsers();
+  
+  return res.status(200).json(users);
+});
+
 module.exports = {
   userCreate,
+  listUsers,
   login,
 };

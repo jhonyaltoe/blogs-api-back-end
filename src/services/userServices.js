@@ -33,7 +33,16 @@ const userCreate = async (body) => {
   return token;
 };
 
+const listUsers = async () => {
+  const users = User.findAll({
+    attributes: { exclude: 'password' },
+  });
+
+  return users;
+};
+
 module.exports = {
   userCreate,
   login,
+  listUsers,
 };
