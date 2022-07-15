@@ -1,13 +1,12 @@
 const { Joi } = require('../helpers');
 
 module.exports = (req, _res, next) => {
-  const { image, ...rest } = req.body;
-  const { error } = Joi.userCreateSchema.validate(rest);
+  const { error } = Joi.loginSchema.validate(req.body);
 
   if (error) {
     error.status = 400;
     next(error);
   }
 
-  return next();
+  next();
 };

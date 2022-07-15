@@ -4,6 +4,21 @@ const { User } = require('../database/models');
 const { CustomError } = require('../helpers');
 require('dotenv').config();
 
+const login = async ({ email, password }) => {
+  const userInfo = await User.findOne({
+    where: { email },
+  });
+
+  if (!userInfo) throw new CustomError('Invalid fields', 400);
+
+  const errorPass = bcrypt.compareSync(password, userInfo.password);
+
+  if (!errorPass) throw new CustomError('Invalid fields', 400);
+
+  const token = jwt.sign(email, process.env.JWT_SECRET);
+  return token;
+};
+
 const userCreate = async (body) => {
   const hashedPassword = await bcrypt.hash(body.password, 10);
   
@@ -23,4 +38,5 @@ const userCreate = async (body) => {
 
 module.exports = {
   userCreate,
+  login,
 };
