@@ -1,8 +1,7 @@
 const { BlogPost, sequelize, PostCategory } = require('../database/models');
-// const { CustomError } = require('../helpers');
 
 const addPost = async (userId, post) => {
-  await sequelize.transaction(async (t) => {
+  const result = await sequelize.transaction(async (t) => {
     const { title, content, categoryIds } = post;
 
     const createdPost = await BlogPost.create({
@@ -17,9 +16,10 @@ const addPost = async (userId, post) => {
     }));
 
     await PostCategory.bulkCreate(postAndCategoriesArr, { transaction: t });
-
     return createdPost;
   });
+
+  return result;
 };
 
 module.exports = {

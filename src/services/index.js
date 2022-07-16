@@ -2,6 +2,7 @@ const { userCreate, login, listUsers, getUserById } = require('./userServices');
 const { tokenAuthentication } = require('./authServices');
 const { addCategory, listCategories } = require('./categoryServices');
 const { addPost } = require('./postServices');
+const { validateCategoryById } = require('./validationServices');
 
 module.exports = {
   userCreate,
@@ -12,4 +13,5 @@ module.exports = {
   addCategory,
   listCategories,
   addPost,
+  validateCategoryById,
 };
