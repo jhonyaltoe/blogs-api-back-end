@@ -43,6 +43,9 @@ router.route('/post')
     middlewares.validateToken,
     middlewares.validateAddPost,
     controllers.addPost,
+  )
+  .get(
+    middlewares.validateToken,
   );
 
 module.exports = router;
