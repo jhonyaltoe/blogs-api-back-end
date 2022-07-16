@@ -41,6 +41,7 @@ router.route('/categories')
 router.route('/post')
   .post(
     middlewares.validateToken,
+    middlewares.validateAddPost,
     controllers.addPost,
   );
 
