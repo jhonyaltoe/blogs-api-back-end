@@ -20,6 +20,7 @@ const options = {
     timezone: 'Z',
   },
   logging: process.env.DEBUG !== 'false',
+  timezone: '-03:00',
 };
 
 module.exports = {

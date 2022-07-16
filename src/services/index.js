@@ -1,6 +1,7 @@
 const { userCreate, login, listUsers, getUserById } = require('./userServices');
 const { tokenAuthentication } = require('./authServices');
-const { addCategory } = require('./categoryServices');
+const { addCategory, listCategories } = require('./categoryServices');
+const { addPost } = require('./postServices');
 
 module.exports = {
   userCreate,
@@ -9,4 +10,6 @@ module.exports = {
   listUsers,
   getUserById,
   addCategory,
+  listCategories,
+  addPost,
 };
