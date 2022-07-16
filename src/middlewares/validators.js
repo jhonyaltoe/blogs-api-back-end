@@ -31,9 +31,18 @@ const validateAddCategory = (req, _res, next) => {
   return next();
 };
 
+const validateAddPost = (req, _res, next) => {
+  const { title, content, categoryIds } = req.body;
+  if (!title || !content || !categoryIds || categoryIds.length === 0) {
+    throw new CustomError('Some required fields are missing', 400);
+  }
+  return next();
+};
+
 module.exports = {
   validateUserCreate,
   validateToken,
   validateLogin,
   validateAddCategory,
+  validateAddPost,
 };
