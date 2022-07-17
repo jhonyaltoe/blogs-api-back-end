@@ -9,7 +9,6 @@ const tokenAuthentication = async (token, toReturn) => {
       const user = await User.findOne({
         where: email,
       });
-
       return user;
     }
   } catch (error) {
