@@ -15,15 +15,15 @@ const addPost = controllerWrapper(async (req, res) => {
 
 const listAllPostsFromUser = controllerWrapper(async (req, res) => {
   const user = await services.tokenAuthentication(req.headers.authorization, true);
-  console.log(user);
-  const posts = await services.listAllPostsFromUser(user);
+  const posts = await services.listAllOrGetOnePostsFromUser(user);
   return res.status(200).json(posts);
 });
 
 const getPostById = controllerWrapper(async (req, res) => {
-  // const user = await services.tokenAuthentication(req.headers.authorization, true);
-
-  return res.status(200).json('Fundou!!!');
+  const user = await services.tokenAuthentication(req.headers.authorization, true);
+  const { id } = req.params;
+  const post = await services.listAllOrGetOnePostsFromUser(user, id);
+  return res.status(200).json(post);
 });
 
 module.exports = {

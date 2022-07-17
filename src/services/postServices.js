@@ -17,9 +17,10 @@ const addPost = async (userId, post) => {
 };
 
 const listAllOrGetOnePostsFromUser = async (user, postId) => {
-  const { id } = user;
+  const { id: userId } = user;
+  const where = postId ? { userId, id: postId } : { userId };
   const posts = await BlogPost[postId ? 'findOne' : 'findAll']({
-    where: { userId: id },
+    where,
     include: [
       { model: User, as: 'user', attributes: { exclude: 'password' } },
       {
