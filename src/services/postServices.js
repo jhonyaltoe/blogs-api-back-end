@@ -16,13 +16,13 @@ const addPost = async (userId, post) => {
   return result;
 };
 
-const listAllPostsFromUser = async (user) => {
+const listAllOrGetOnePostsFromUser = async (user, postId) => {
   const { id } = user;
-  const posts = await BlogPost.findAll({
+  const posts = await BlogPost[postId ? 'findOne' : 'findAll']({
     where: { userId: id },
     include: [
       { model: User, as: 'user', attributes: { exclude: 'password' } },
-      { 
+      {
         model: Category,
         as: 'categories',
         through: { attributes: [] },
@@ -35,5 +35,5 @@ const listAllPostsFromUser = async (user) => {
 
 module.exports = {
   addPost,
-  listAllPostsFromUser,
+  listAllOrGetOnePostsFromUser,
 };

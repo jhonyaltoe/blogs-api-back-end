@@ -38,6 +38,12 @@ router.route('/categories')
   );
 
 // POST routes
+// router.route('/post/:id')
+//   .post(
+//     middlewares.validateToken,
+//     controllers.getPostById,
+//   );
+
 router.route('/post')
   .post(
     middlewares.validateToken,

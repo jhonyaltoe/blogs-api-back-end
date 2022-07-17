@@ -20,7 +20,14 @@ const listAllPostsFromUser = controllerWrapper(async (req, res) => {
   return res.status(200).json(posts);
 });
 
+const getPostById = controllerWrapper(async (req, res) => {
+  // const user = await services.tokenAuthentication(req.headers.authorization, true);
+
+  return res.status(200).json('Fundou!!!');
+});
+
 module.exports = {
   addPost,
   listAllPostsFromUser,
+  getPostById,
 };

@@ -1,6 +1,6 @@
 const { userCreate, listUsers, login, getUserById } = require('./userControllers');
 const { addCategory, listCategories } = require('./categoryControllers');
-const { addPost, listAllPostsFromUser } = require('./postControllers');
+const { addPost, listAllPostsFromUser, getPostById } = require('./postControllers');
 
 module.exports = {
   userCreate,
@@ -11,4 +11,5 @@ module.exports = {
   listCategories,
   addPost,
   listAllPostsFromUser,
+  getPostById,
 };
