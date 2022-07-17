@@ -46,6 +46,7 @@ router.route('/post')
   )
   .get(
     middlewares.validateToken,
+    controllers.listAllPostsFromUser,
   );
 
 module.exports = router;

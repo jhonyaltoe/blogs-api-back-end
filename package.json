@@ -19,6 +19,7 @@
   },
   "main": "src/server.js",
   "scripts": {
+    "reset": "npm run drop && npm run prestart && npm run seed && clear && npm run debug",
     "prestart": "npx sequelize-cli db:create && npx sequelize-cli db:migrate",
     "start": "node .",
     "start:test": "API_PORT=3030 NODE_ENV=test npm start",

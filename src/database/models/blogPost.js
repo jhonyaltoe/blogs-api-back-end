@@ -36,6 +36,7 @@ module.exports = (sequelize, DataTypes) => {
     BlogPost.belongsTo(models.User, {
       foreignKey: 'userId',
       onDelete: 'CASCADE',
+      as: 'user'
     })
   };
 

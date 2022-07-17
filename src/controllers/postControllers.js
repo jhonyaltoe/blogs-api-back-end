@@ -13,6 +13,14 @@ const addPost = controllerWrapper(async (req, res) => {
   return res.status(201).json(addedPost);
 });
 
+const listAllPostsFromUser = controllerWrapper(async (req, res) => {
+  const user = await services.tokenAuthentication(req.headers.authorization, true);
+  console.log(user);
+  const posts = await services.listAllPostsFromUser(user);
+  return res.status(200).json(posts);
+});
+
 module.exports = {
   addPost,
+  listAllPostsFromUser,
 };
