@@ -8,7 +8,6 @@ const addCategory = async ({ name }) => {
   });
 
   if (!created) throw new CustomError('Category already exists', 409);
-
   return category;
 };
 

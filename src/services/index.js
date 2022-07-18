@@ -1,7 +1,12 @@
-const { userCreate, login, listUsers, getUserById } = require('./userServices');
+const { userCreate, login, listUsers, getUserById, deleteUser } = require('./userServices');
 const { addCategory, listCategories } = require('./categoryServices');
-const { addPost, listAllOrGetOnePostsFromUser, updatePost } = require('./postServices');
 const { validateCategoryById } = require('./validationServices');
+const {
+  addPost,
+  listAllOrGetOnePostsFromUser,
+  updatePost,
+  deletePostById,
+} = require('./postServices');
 
 module.exports = {
   userCreate,
@@ -14,4 +19,6 @@ module.exports = {
   validateCategoryById,
   listAllOrGetOnePostsFromUser,
   updatePost,
+  deletePostById,
+  deleteUser,
 };

@@ -5,6 +5,12 @@ const middlewares = require('../middlewares');
 const router = express.Router();
 
 // USER routes
+router.route('/user/me')
+  .delete(
+    middlewares.tokenAuthenticator,
+    controllers.deleteUser,
+  );
+
 router.route('/user/:id')
   .get(middlewares.tokenAuthenticator, controllers.getUserById);
 
@@ -47,6 +53,10 @@ router.route('/post/:id')
     middlewares.tokenAuthenticator,
     middlewares.validateUpdatePost,
     controllers.updatePost,
+  )
+  .delete(
+    middlewares.tokenAuthenticator,
+    controllers.deletePostById,
   );
 
 router.route('/post')

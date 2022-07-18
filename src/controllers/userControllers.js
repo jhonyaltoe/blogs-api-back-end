@@ -22,9 +22,16 @@ const getUserById = controllerWrapper(async (req, res) => {
   return res.status(200).json(user);
 });
 
+const deleteUser = controllerWrapper(async (req, res) => {
+  const { user } = req.body;
+  await services.deleteUser(user.id);
+  return res.status(204).json();
+});
+
 module.exports = {
   userCreate,
   listUsers,
   login,
   getUserById,
+  deleteUser,
 };

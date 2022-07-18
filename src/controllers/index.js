@@ -1,6 +1,12 @@
-const { userCreate, listUsers, login, getUserById } = require('./userControllers');
+const { userCreate, listUsers, login, getUserById, deleteUser } = require('./userControllers');
 const { addCategory, listCategories } = require('./categoryControllers');
-const { addPost, listAllPostsFromUser, getPostById, updatePost } = require('./postControllers');
+const {
+  addPost,
+  listAllPostsFromUser,
+  getPostById,
+  updatePost,
+  deletePostById,
+} = require('./postControllers');
 
 module.exports = {
   userCreate,
@@ -13,4 +19,6 @@ module.exports = {
   listAllPostsFromUser,
   getPostById,
   updatePost,
+  deletePostById,
+  deleteUser,
 };

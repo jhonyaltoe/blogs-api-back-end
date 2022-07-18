@@ -11,7 +11,6 @@ const addPost = async (userId, post) => {
     }, { transaction: t });
 
     await createdPost.addCategory(categoryIds, { transaction: t });
-
     return createdPost;
   });
   return result;
@@ -46,8 +45,16 @@ const updatePost = async (userId, id, newPost) => {
   return updatedPost;
 };
 
+const deletePostById = async (userId, id) => {
+  const post = await BlogPost.findOne({ where: { id } });
+  if (!post) throw new CustomError('Post does not exist', 404);
+  if (post.dataValues.userId !== userId) throw new CustomError('Unauthorized user', 401);
+  await post.destroy();
+};
+
 module.exports = {
   addPost,
   listAllOrGetOnePostsFromUser,
   updatePost,
+  deletePostById,
 };

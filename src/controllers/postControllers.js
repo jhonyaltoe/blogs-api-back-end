@@ -35,9 +35,17 @@ const updatePost = controllerWrapper(async (req, res) => {
   return res.status(200).json(updatedPost);
 });
 
+const deletePostById = controllerWrapper(async (req, res) => {
+  const { user } = req.body;
+  const { id: postId } = req.params;
+  await services.deletePostById(user.id, postId);
+  return res.status(204).json();
+});
+
 module.exports = {
   addPost,
   listAllPostsFromUser,
   getPostById,
   updatePost,
+  deletePostById,
 };
