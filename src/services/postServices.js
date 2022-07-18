@@ -42,7 +42,6 @@ const updatePost = async (userId, id, newPost) => {
     ] });
     const { dataValues } = updatedPost;
   if (userId !== dataValues.user.id) throw new CustomError('Unauthorized user', 401);
-  // console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXX', dataValues.user.id, userId);
   await updatedPost.update({ title, content });
   return updatedPost;
 };

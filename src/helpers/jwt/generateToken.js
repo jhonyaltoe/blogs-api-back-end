@@ -6,7 +6,6 @@ module.exports = (payload) => {
     expiresIn: '7d',
     algorithm: 'HS256',
   };
-  console.log('GENERATE', payload);
   const token = jwt.sign(payload, process.env.JWT_SECRET, jwtConfig);
   return token;
 };
