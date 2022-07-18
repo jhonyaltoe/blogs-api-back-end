@@ -1,16 +1,11 @@
 const { jwt, CustomError } = require('../helpers');
-const { User } = require('../database/models');
+// const { User } = require('../database/models');
 
-const tokenAuthentication = async (token, toReturn) => {
+const tokenAuthentication = async (token) => {
   try {
-    const { data: { email } } = jwt.decodeToken(token);
-
-    if (toReturn) {
-      const user = await User.findOne({
-        where: email,
-      });
-      return user;
-    }
+    const data = jwt.decodeToken(token);
+    console.log('ATTH ==>', data);
+    return data;
   } catch (error) {
     console.log(error);
 

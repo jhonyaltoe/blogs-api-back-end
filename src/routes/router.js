@@ -42,6 +42,10 @@ router.route('/post/:id')
   .get(
     middlewares.validateToken,
     controllers.getPostById,
+  )
+  .put(
+    middlewares.validateToken,
+    controllers.updatePost,
   );
 
 router.route('/post')

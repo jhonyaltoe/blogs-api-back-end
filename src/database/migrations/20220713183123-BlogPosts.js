@@ -32,9 +32,6 @@ module.exports = {
       updated: {
         type: Sequelize.DATE
       }
-    }, {
-      createdAt: 'published',
-      updatedAt: 'updated'
     });
   },
 

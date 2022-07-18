@@ -11,7 +11,7 @@ const login = async ({ email, password }) => {
 
   if (!errorPass) throw new CustomError('Invalid fields', 400);
 
-  const token = jwt.generateToken(email);
+  const token = jwt.generateToken({ id: userInfo.id, email });
 
   return token;
 };
@@ -26,10 +26,9 @@ const userCreate = async (body) => {
   
   if (!created) throw new CustomError('User already registered', 409);
 
-  const { password, ...rest } = user;
+  const { password, ...rest } = user.dataValues;
 
   const token = jwt.generateToken(rest);
-
   return token;
 };
 

@@ -32,7 +32,23 @@ const listAllOrGetOnePostsFromUser = async (user, postId) => {
   return posts;
 };
 
+const updatePost = async (userId, id, newPost) => {
+  const { title, content } = newPost;
+  const updatedPost = await BlogPost.findOne({
+    where: { userId, id },
+    include: [
+      { model: User, as: 'user', attributes: { exclude: 'password' } },
+      { model: Category, as: 'categories', through: { attributes: [] } },
+    ] });
+    const { dataValues } = updatedPost;
+  if (userId !== dataValues.user.id) throw new CustomError('Unauthorized user', 401);
+  // console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXX', dataValues.user.id, userId);
+  await updatedPost.update({ title, content });
+  return updatedPost;
+};
+
 module.exports = {
   addPost,
   listAllOrGetOnePostsFromUser,
+  updatePost,
 };
