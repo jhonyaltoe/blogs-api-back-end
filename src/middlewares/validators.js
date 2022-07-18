@@ -39,10 +39,19 @@ const validateAddPost = (req, _res, next) => {
   return next();
 };
 
+const validateUpdatePost = (req, _res, next) => {
+  const { title, content } = req.body;
+  if (!title || !content || title.length === 0 || content.length === 0) {
+    throw new CustomError('Some required fields are missing', 400);
+  }
+  return next();
+};
+
 module.exports = {
   validateUserCreate,
   validateToken,
   validateLogin,
   validateAddCategory,
   validateAddPost,
+  validateUpdatePost,
 };

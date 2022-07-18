@@ -40,8 +40,8 @@ const updatePost = async (userId, id, newPost) => {
       { model: User, as: 'user', attributes: { exclude: 'password' } },
       { model: Category, as: 'categories', through: { attributes: [] } },
     ] });
-    const { dataValues } = updatedPost;
-  if (userId !== dataValues.user.id) throw new CustomError('Unauthorized user', 401);
+  
+  if (!updatedPost) throw new CustomError('Unauthorized user', 401);
   await updatedPost.update({ title, content });
   return updatedPost;
 };

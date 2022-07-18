@@ -45,6 +45,7 @@ router.route('/post/:id')
   )
   .put(
     middlewares.validateToken,
+    middlewares.validateUpdatePost,
     controllers.updatePost,
   );
 

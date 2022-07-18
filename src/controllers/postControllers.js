@@ -7,7 +7,7 @@ const addPost = controllerWrapper(async (req, res) => {
 
   const { id } = user;
   const post = req.body;
-
+  console.log('PASSEI AQUI!');
   const addedPost = await services.addPost(id, post);
   console.log('CONTROLLER', addedPost);
   return res.status(201).json(addedPost);
@@ -28,7 +28,7 @@ const getPostById = controllerWrapper(async (req, res) => {
 
 const updatePost = controllerWrapper(async (req, res) => {
   const user = await services.tokenAuthentication(req.headers.authorization);
-  // console.log('YYYYYYYYYYYYYYYYYYYYYY', user);
+  // console.log('CONTROLLER =======>', user);
   const { id: postId } = req.params;
   const newPost = req.body;
   const updatedPost = await services.updatePost(user.id, postId, newPost);

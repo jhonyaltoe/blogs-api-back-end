@@ -6,6 +6,7 @@ const {
   validateLogin,
   validateAddCategory,
   validateAddPost,
+  validateUpdatePost,
 } = require('./validators');
 
 module.exports = {
@@ -16,4 +17,5 @@ module.exports = {
   validateToken,
   validateAddCategory,
   validateAddPost,
+  validateUpdatePost,
 };
