@@ -8,6 +8,7 @@ const {
   validateAddPost,
   validateUpdatePost,
 } = require('./validators');
+const tokenAuthenticator = require('./tokenAuthenticator');
 
 module.exports = {
   errorHanddler,
@@ -18,4 +19,5 @@ module.exports = {
   validateAddCategory,
   validateAddPost,
   validateUpdatePost,
+  tokenAuthenticator,
 };

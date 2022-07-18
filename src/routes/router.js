@@ -6,7 +6,7 @@ const router = express.Router();
 
 // USER routes
 router.route('/user/:id')
-  .get(middlewares.validateToken, controllers.getUserById);
+  .get(middlewares.tokenAuthenticator, controllers.getUserById);
 
 router.route('/user')
   .post(
@@ -14,7 +14,7 @@ router.route('/user')
     controllers.userCreate,
   )
   .get(
-    middlewares.validateToken,
+    middlewares.tokenAuthenticator,
     controllers.listUsers,
   );
 
@@ -28,35 +28,35 @@ router.route('/login')
 // CATEGORIES routes
 router.route('/categories')
   .post(
-    middlewares.validateToken,
+    middlewares.tokenAuthenticator,
     middlewares.validateAddCategory,
     controllers.addCategory,
   )
   .get(
-    middlewares.validateToken,
+    middlewares.tokenAuthenticator,
     controllers.listCategories,
   );
 
 // POST routes
 router.route('/post/:id')
   .get(
-    middlewares.validateToken,
+    middlewares.tokenAuthenticator,
     controllers.getPostById,
   )
   .put(
-    middlewares.validateToken,
+    middlewares.tokenAuthenticator,
     middlewares.validateUpdatePost,
     controllers.updatePost,
   );
 
 router.route('/post')
   .post(
-    middlewares.validateToken,
+    middlewares.tokenAuthenticator,
     middlewares.validateAddPost,
     controllers.addPost,
   )
   .get(
-    middlewares.validateToken,
+    middlewares.tokenAuthenticator,
     controllers.listAllPostsFromUser,
   );
 

@@ -11,21 +11,14 @@ const userCreate = controllerWrapper(async (req, res) => {
   return res.status(201).json({ token });
 });
 
-const listUsers = controllerWrapper(async (req, res) => {
-  await services.tokenAuthentication(req.headers.authorization);
-
+const listUsers = controllerWrapper(async (_req, res) => {
   const users = await services.listUsers();
-  
   return res.status(200).json(users);
 });
 
 const getUserById = controllerWrapper(async (req, res) => {
-  await services.tokenAuthentication(req.headers.authorization);
-
   const { id } = req.params;
-
   const user = await services.getUserById(id);
-
   return res.status(200).json(user);
 });
 
