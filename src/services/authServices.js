@@ -1,10 +1,10 @@
-const { jwt, CustomError } = require('../helpers');
-// const { User } = require('../database/models');
+const jwt = require('jsonwebtoken');
+const { CustomError } = require('../helpers');
+require('dotenv').config();
 
 const tokenAuthentication = async (token) => {
   try {
-    const data = jwt.decodeToken(token);
-    console.log('ATTH ==>', data);
+    const data = jwt.verify(token, process.env.JWT_SECRET);
     return data;
   } catch (error) {
     console.log(error);
