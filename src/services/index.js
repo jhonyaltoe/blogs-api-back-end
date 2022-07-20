@@ -6,6 +6,7 @@ const {
   listAllOrGetOnePostsFromUser,
   updatePost,
   deletePostById,
+  getPostsBySearch,
 } = require('./postServices');
 
 module.exports = {
@@ -21,4 +22,5 @@ module.exports = {
   updatePost,
   deletePostById,
   deleteUser,
+  getPostsBySearch,
 };

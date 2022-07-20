@@ -42,10 +42,17 @@ const deletePostById = controllerWrapper(async (req, res) => {
   return res.status(204).json();
 });
 
+const getPostsBySearch = controllerWrapper(async (req, res) => {
+  const { q } = req.query;
+  const posts = await services.getPostsBySearch(q);
+  return res.status(200).json(posts);
+});
+
 module.exports = {
   addPost,
   listAllPostsFromUser,
   getPostById,
   updatePost,
   deletePostById,
+  getPostsBySearch,
 };

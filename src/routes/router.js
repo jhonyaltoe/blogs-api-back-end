@@ -44,6 +44,12 @@ router.route('/categories')
   );
 
 // POST routes
+router.route('/post/search')
+  .get(
+    middlewares.tokenAuthenticator,
+    controllers.getPostsBySearch,
+  );
+
 router.route('/post/:id')
   .get(
     middlewares.tokenAuthenticator,
