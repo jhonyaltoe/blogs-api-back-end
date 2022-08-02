@@ -8,9 +8,7 @@ const addPost = controllerWrapper(async (req, res) => {
   const { id } = user;
 
   const post = req.body;
-  console.log('PASSEI AQUI!');
   const addedPost = await services.addPost(id, post);
-  console.log('CONTROLLER', addedPost);
   return res.status(201).json(addedPost);
 });
 
