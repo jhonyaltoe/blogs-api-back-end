@@ -7,7 +7,7 @@ services:
     working_dir: /app
     volumes:
       - ./:/app
-    container_name: blogs_api
+    container_name: $MYSQL_DB_NAME
     tty: true
     stdin_open: true
     command: bash
@@ -17,20 +17,20 @@ services:
     ports:
       - 3000:3000
     environment:
-      MYSQL_USER: root
-      MYSQL_PASSWORD: password
+      MYSQL_USER: $MYSQL_USER
+      MYSQL_PASSWORD: $MYSQL_PASSWORD
       HOSTNAME: db
-      JWT_SECRET: secretJWT
+      JWT_SECRET: $JWT_SECRET
   db:
     container_name: blogs_api_db
     image: mysql:8.0.21
     platform: linux/x86_64
     restart: always
     ports:
-      - 3306:3306
+      - $MYSQL_PORT:3306
       - 33060:33060
     environment:
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: $MYSQL_PASSWORD
 
 networks:
   default:
