@@ -39,4 +39,4 @@
 - **Passo 9:** renomeie arquivo `.env.example` para `.env` onde contem as variáveis de ambiente.
 
 ### Atenção: 
-Várias das rotas necessitam seja passo no header da requisição o token gerado ao fazer um login. Para isso utilize a rota `/user` para criar um usuário e em seguida faça o login com na rota `/login` para obter na resposta o token que será necessário para as outras requisições.
+Várias das rotas necessitam seja passo no header da requisição o **token** gerado ao fazer um login. Para isso utilize a rota `/user` para criar um usuário e em seguida faça o login com na rota `/login` para obter na resposta o token que será necessário para as outras requisições.
