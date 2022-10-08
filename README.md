@@ -1,4 +1,4 @@
-# Projeto Api Back End
+# Projeto Blogs Api - back end
 
 ## Como rodar a aplicação?
 
