@@ -18,7 +18,7 @@
 
   `docker-compose up -d --build`
 
-**obs.:** caso ocorra algum problema ao rodar o `docker-compose` um possível solução é remover todos os containers e rodar o comando acima de novo
+***obs.:*** caso ocorra algum problema ao rodar o `docker-compose` um possível solução é remover todos os containers e rodar o comando acima de novo
 
 - **Passo 5:** crie o banco de dados e as tabelas com o comando abaixo
 
@@ -35,3 +35,8 @@
 - **Passo 8:** agora dentro do container rode a aplicação com o seguinte comando
 
   `npm run debug` para rodar com o nodemon ou `npm start`
+  
+- **Passo 9:** renomeie arquivo `.env.example` para `.env` onde contem as variáveis de ambiente.
+
+### Atenção: 
+Várias das rotas necessitam seja passo no header da requisição o token gerado ao fazer um login. Para isso utilize a rota `/user` para criar um usuário e em seguida faça o login com na rota `/login` para obter na resposta o token que será necessário para as outras requisições.
