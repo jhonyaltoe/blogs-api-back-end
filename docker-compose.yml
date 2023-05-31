@@ -7,7 +7,7 @@ services:
     working_dir: /app
     volumes:
       - ./:/app
-    container_name: $MYSQL_DB_NAME
+    container_name: blogs_api_node
     tty: true
     stdin_open: true
     command: bash
