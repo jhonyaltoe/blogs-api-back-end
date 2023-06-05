@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const environment = process.env.NODE_ENV || 'test';
+const environment = process.env.NODE_ENV || 'development';
 
 const suffix = {
   dev: '-dev',
@@ -19,7 +19,7 @@ const options = {
   dialectOptions: {
     timezone: 'Z',
   },
-  logging: process.env.DEBUG !== 'false',
+  logging: process.env.DEBUG !== 'false'
 };
 
 module.exports = {

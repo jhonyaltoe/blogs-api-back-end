@@ -21,8 +21,9 @@
   },
   "main": "src/server.js",
   "scripts": {
-    "reset": "npm run drop && npm run prestart && npm run seed && clear && npm run debug",
-    "prestart": "npx sequelize-cli db:create && npx sequelize-cli db:migrate",
+    "reset": "npm run drop && npm run createdb && npm run migratedb && npm run seed && clear && npm run debug",
+    "createdb": "npx sequelize-cli db:create",
+    "migratedb": "npx sequelize-cli db:migrate",
     "start": "node .",
     "drop": "npx sequelize-cli db:drop",
     "seed": "npx sequelize-cli db:seed:all",
