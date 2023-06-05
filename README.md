@@ -10,7 +10,7 @@ Sinta-se à vontade para entrar em contato, seja qual for o motivo, principalmen
 
 ## Seja bem-vindo ao meu projeto back-end!
 
-Neste projeto back-end, você encontrará uma API com banco de dados para manipular um blog. É possível adicionar usuários, adicionar posts, editar, listar, deletar, pesquisar e tudo isso de forma autenticada. Isso está incrível!
+Neste projeto back-end, você encontrará uma API com banco de dados para manipular um blog. É possível adicionar usuários, adicionar posts, editar, listar, deletar, pesquisar e tudo isso de forma autenticada. Não saia sem conferir porque está incrível!
 
 ## Sumário
 - [Blogs API Back-end](#blogs-api-back-end)
